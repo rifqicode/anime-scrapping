@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import os
+import time
 
 # author Muhammad Rifqi <muhammadrifqi.tb@gmail.com>
 def writeLink(path , no , animeName , link):
@@ -75,5 +76,6 @@ if website.status_code == 200:
             print(progress)
 
     print('\n PROGRAM SELESAI <author : Muhammad Rifqi>')
+    time.sleep(5)
 else :
     print('something wrong here')
