@@ -3,25 +3,33 @@ import requests
 import os
 
 # author Muhammad Rifqi <muhammadrifqi.tb@gmail.com>
-def writeLink(animeName , link):
-    path = os.path.dirname(os.path.abspath(__file__))
+def writeLink(path , no , animeName , link):
+    # path = os.path.dirname(os.path.abspath(__file__))
     # Filename to append
     filename = path + "\list-anime.txt"
     # The 'a' flag tells Python to keep the file contents
     # and append (add line) at the end of the file.
     myfile = open(filename, 'a')
     # Add the line
-    myfile.write( 'Nama : ' + animeName + '\nLink : ' + link + '\n')
+    myfile.write( no + '. Nama : ' + animeName + '\nLink : https:' + link + '\n\n')
     # Close the file
     myfile.close()
 
 
 website = requests.get('https://www.samehadaku.tv/')
 
+no = 0
+row = input("Masukan Jumlah Yang Ingin Didownload : ")
+pathFolder = input("Masukan Path Folder untuk menyimpan hasil download (Wajib Diisi) : ")
+
+if len(pathFolder) == 0:
+    print('Harap Isi Path Folder!')
+    exit()
+
 if website.status_code == 200:
     html = BeautifulSoup(website.content , 'html.parser')
     getContents = html.find_all(class_="post-title")
-    no = 0
+    getContents = getContents[0:int(row)]
 
     print('Lagi Progress , sabar yahh ......')
     for x in getContents:
@@ -63,7 +71,7 @@ if website.status_code == 200:
                 linkDownloadAnime = contentZippy.find('div' , class_="video-share").find('input').get('value')
                 progress = "Berhasil " + str(no)
 
-            writeLink(animeName , linkDownloadAnime)
+            writeLink(pathFolder , str(no) , animeName , linkDownloadAnime)
             print(progress)
 
     print('\n PROGRAM SELESAI <author : Muhammad Rifqi>')
