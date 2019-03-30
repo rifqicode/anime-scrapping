@@ -21,7 +21,6 @@ website = requests.get('https://www.samehadaku.tv/')
 if website.status_code == 200:
     html = BeautifulSoup(website.content , 'html.parser')
     getContents = html.find_all(class_="post-title")
-    getContents = getContents[1:2]
     no = 0
 
     print('Lagi Progress , sabar yahh ......')
