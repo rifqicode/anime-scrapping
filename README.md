@@ -10,13 +10,8 @@ How to use :
 4. Install package BeautifulSoup 'pip install beautifulsoup4'
 5. Last step is just run 'scrapping-anime.py'
 
-Another Way :
+Other Way :
 
 1. Clone this repository https://github.com/rifqicode/anime-scrapping.git
 2. Open dist/Scrapping-Anime
 3. And run scrapping-anime.exe
-
-
-
-Hope u like It
-:>
